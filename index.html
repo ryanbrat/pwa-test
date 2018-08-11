@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <!-- <meta name="description" content="">
+  <meta name="author" content=""> -->
+
+  <meta property="og:title" content="Part Time Van Life" />
+  <meta property="og:image" content="https://ryanbrat.github.io/fuel-consumption-project/images/van-north-co.jpg" />
+  <meta property="og:description" content="How much fuel does your car use at idle?" />
+  <!-- <meta property="og:url" content=""> -->
+
+  <title>Part Time Van Life</title>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+  <link href="styles.css" rel="stylesheet">
+</head>
+
+<body>
+
+  <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+    <a class="navbar-brand" href="index.html">Part Time Van Life</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+    <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <!-- <li class="nav-item">
+            <a class="nav-link" href="#">Link</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link disabled" href="#">Disabled</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+            <div class="dropdown-menu" aria-labelledby="dropdown01">
+              <a class="dropdown-item" href="#">Action</a>
+              <a class="dropdown-item" href="#">Another action</a>
+              <a class="dropdown-item" href="#">Something else here</a>
+            </div>
+        </li> -->
+      </ul>
+      <form class="form-inline my-2 my-lg-0">
+        <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
+      </form>
+    </div>
+  </nav>
+
+  <main role="main" class="container">
+
+    <h4 class="p-3">How much fuel does your car use at idle?</h4>
+
+
+
+    <p>There is a lot of interest in the nomadic “van life” movement, the glamorous images of sprinter vans parked on a scenic overlook would be enough to entice most outdoor enthusiasts into jumping on board - until looking up the cost of a sprinter + conversion.
+      What about the rest of us that may want to travel and car camp affordably a week or two a year and can’t justify a full blow “van life van”? In a normal vehicle without an “off the grid” power system (generator, solar panels, batteries, ext) you won’t be able to power inverter run accessories or even heat and a/c without running the vehicle's engine. So what does it cost to idle your car’s engine for 30 minutes or an hour to enable some of those creature comforts? Armed with a background
+      in automotive repair and a friend who is good at math, I set out to answer this question!</p>
+
+    <p>There are a couple different ways to calculate fuel consumption, but after running through a few approaches that involved reading sensor data from an automotive computer scanner we realized we needed a simpler way of collecting data so that this calculator would be useful to people without a scanner or in-depth engine knowledge. My friend (the math guy) suggested finding a way to convert from miles per hour to gallons per hour. This would make the data needed to run the calculation easy for anyone to get. Average hi-way miles per gallon, my van gets 22 on road trips. Second thing: rpms while cruising on the hi-way. Take note of this with cruise set at 70 mph, on relatively level road. My vans engine runs at 2000 rpms at 70 mph. Next, we need the rpms while idling in park. This should be noted with a warm engine, my engine idles at 600 rpms. And for your convenience enter the price of fuel to calculate the cost per hour.</p>
+
+    <p>Note, this calculation is not optimized for diesel engines. It also does not take into account engine warm up, engines are much less efficient when first started and cold but can generally reach operating temp within 10 minutes, or more in very cold climates.</p>
+
+    <h4 class="p-3">Fuel calculator</h4>
+
+    <div id="input-box" class="form-group">
+      <form>
+        Hi-way fuel mpgs
+        <input id="field1" class="form-control" type="text" name="hiwaympg" placeholder="ex: 25"><br> Hi-way cruising rpms
+        <input id="field2" class="form-control" type="text" name="hiwayrpm" placeholder="ex: 2000"><br> Warm idle rpms
+        <input id="field3" class="form-control" type="text" name="idlerpm" placeholder="ex: 600"><br> Fuel cost per gallon
+        <input id="field4" class="form-control" type="text" name="idlerpm" placeholder="ex: 2.50"><br>
+
+        <button id="submit" class="btn btn-primary" type="submit" value="Calculate" onclick="myFunction()">Submit</button>
+      </form>
+    </div>
+
+
+    <div id="gph-box">
+      <p>Your fuel consumption is: <span id="gph"><span class="underline">&nbsp;</span></span> gallon(s) per hour.</p>
+      <p>Your fuel consumption cost per hour is: $<span id="cost_per_hour"><span class="hide-dollar-sign"></span> <span class="underline">&nbsp;</span></span>.</p>
+    </div>
+
+    <figure class="figure">
+      <img src="./images/van-north-co.jpg" class="figure-img img-fluid rounded" alt="A generic square placeholder image with rounded corners in a figure.">
+      <figcaption class="figure-caption">Somewhere in North Carolina - My minivan serves as a part-time van-life rig.</figcaption>
+    </figure>
+
+  </main>
+
+  <footer class="bg-dark text-white mt-4">
+    <div class="container-fluid py-3">
+      <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-3"></div>
+        <div class="col-md-3"></div>
+        <div class="col-md-3"></div>
+      </div>
+      <div class="row">
+        <div class="col-md-6"></div>
+        <div class="col-md-3"></div>
+        <div class="col-md-3 text-right small align-self-end">©2018 Part Time Van Life</div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- /.container -->
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  <script src="main.js"></script>
+</body>
+
+</html>
